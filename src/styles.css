@@ -7371,3 +7371,8 @@ footer .attribution {
   color: gray;
   font-style: italic;
 }
+
+.link-list-item-description:hover {
+  color: gray;
+  text-decoration: none;
+}
