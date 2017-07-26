@@ -1,5 +1,11 @@
 <div class="article-preview">
   <article-meta [article]="article">
+    <downvote-button
+      [article]="article"
+      (onToggle)="onToggleDownvote($event)"
+      class="pull-xs-right">
+      {{article.downvotesCount}}
+    </downvote-button>
     <favorite-button
       [article]="article"
       (onToggle)="onToggleFavorite($event)"

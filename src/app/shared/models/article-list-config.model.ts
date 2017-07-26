@@ -5,6 +5,7 @@ export class ArticleListConfig {
     tag?: string,
     author?: string,
     favorited?: string,
+    downvoted?: string,
     limit?: number,
     offset?: number,
     title?: string

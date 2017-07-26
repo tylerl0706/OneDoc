@@ -10,5 +10,7 @@ export class Article {
   updatedAt: string;
   favorited: boolean;
   favoritesCount: number;
+  downvoted: boolean;
+  downvotesCount: number;
   author: Profile;
 }

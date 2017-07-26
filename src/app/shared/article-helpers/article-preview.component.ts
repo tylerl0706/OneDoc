@@ -18,4 +18,14 @@ export class ArticlePreviewComponent {
       this.article['favoritesCount']--;
     }
   }
+
+  onToggleDownvote(downvoted: boolean) {
+    this.article['downvoted'] = downvoted;
+
+    if (downvoted) {
+      this.article['downvotesCount']++;
+    } else {
+      this.article['downvotesCount']--;
+    }
+  }
 }

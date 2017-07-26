@@ -59,5 +59,12 @@ export class ArticlesService {
     return this.apiService.delete('/articles/' + slug + '/favorite');
   }
 
+  downvote(slug): Observable<Article> {
+    return this.apiService.post('/articles/' + slug + '/downvote');
+  }
+
+  undownvote(slug): Observable<Article> {
+    return this.apiService.delete('/articles/' + slug + '/downvote');
+  }
 
 }
