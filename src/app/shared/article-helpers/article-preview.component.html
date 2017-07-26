@@ -8,14 +8,13 @@
     </favorite-button>
   </article-meta>
 
-  <ng-template [ngIf]="article.description.length == 0">
+  <ng-template [ngIf]="article.description.length != 0">
     <h1><a href="{{article.description}}"> {{ article.title }}</a></h1>
-    <a href="{{article.description}}"> <p>{{ article.description }}</p></a>
+    <p><a href="{{article.description}}"> {{ article.description }}</a><p>
   </ng-template>
   <a [routerLink]="['/article', article.slug]" class="preview-link">
-    <ng-template [ngIf]="article.description.length != 0">
-      <h1><a href="{{article.description}}"> {{ article.title }}</a></h1>
-      <a href="{{article.description}}"> <p>{{ article.description }}</p></a>
+    <ng-template [ngIf]="article.description.length == 0">
+    <h1>{{ article.title }}</h1>
     </ng-template>
     <span>Read more...</span>
     <ul class="tag-list">
