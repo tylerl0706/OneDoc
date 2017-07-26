@@ -1,15 +1,24 @@
 <div class="home-page">
 
-  <div class="banner" *showAuthed="false">
+  <!-- <div class="banner" *showAuthed="false">
     <div class="container">
       <h1 class="logo-font">conduit</h1>
       <p>A place to share your <i>Angular 2</i> knowledge.</p>
     </div>
-  </div>
+  </div> -->
+
+  <div class="banner">
+      <div class="container row">
+        <input
+          class="col-md-12 search-box"
+          placeholder="Looking for anything in particular?"
+          (keyup)="$event.keyCode == 13 && (searchInput.value.length > 0? setListTo('all', {title: searchInput.value}) : setListTo('all'))"
+          #searchInput>
+      </div>
+    </div>
 
   <div class="container page">
     <div class="row">
-
       <div class="col-md-9">
         <div class="feed-toggle">
           <ul class="nav nav-pills outline-active">
@@ -22,14 +31,16 @@
             </li>
             <li class="nav-item">
               <a class="nav-link"
-                 [ngClass]="{'active': listConfig.type === 'all' && !listConfig.filters.tag}"
+                 [ngClass]="{'active': listConfig.type === 'all' && !listConfig.filters.tag && !listConfig.filters.title }"
                  (click)="setListTo('all')">
                  Global Feed
               </a>
             </li>
-            <li class="nav-item" [hidden]="!listConfig.filters.tag">
+            <li class="nav-item" [hidden]="!listConfig.filters.tag && !listConfig.filters.title">
               <a class="nav-link active">
-                <i class="ion-pound"></i> {{ listConfig.filters.tag }}
+                <i [hidden]="!listConfig.filters.tag" class="ion-pound"></i>
+                <span [hidden]="!listConfig.filters.title">🔍</span>
+                {{ listConfig.filters.tag || listConfig.filters.title }}
               </a>
             </li>
           </ul>
