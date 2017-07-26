@@ -9,14 +9,14 @@
   </article-meta>
 
   <ng-template [ngIf]="article.description.length != 0">
-    <h1><a href="{{article.description}}"> {{ article.title }}</a></h1>
-    <p><a href="{{article.description}}"> {{ article.description }}</a><p>
+    <h3 class="link-list-item"><a href="{{article.description}}"> {{ article.title }}</a></h3>
+    <p><a class="link-list-item-description" href="{{article.description}}"> {{ article.description }}</a><p>
   </ng-template>
   <a [routerLink]="['/article', article.slug]" class="preview-link">
     <ng-template [ngIf]="article.description.length == 0">
-    <h1>{{ article.title }}</h1>
+    <h3 class="link-list-item">{{ article.title }}</h3>
     </ng-template>
-    <span>Read more...</span>
+    <span> comments and more...</span>
     <ul class="tag-list">
       <li class="tag-default tag-pill tag-outline"
         *ngFor="let tag of article.tagList">
