@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   listConfig: ArticleListConfig = new ArticleListConfig();
   tags: Array<string> = [];
   tagsLoaded = false;
+  value: string;
 
   ngOnInit() {
     this.userService.isAuthenticated.subscribe(
@@ -50,5 +51,14 @@ export class HomeComponent implements OnInit {
 
     // Otherwise, set the list object
     this.listConfig = {type: type, filters: filters};
+  }
+
+  doSearch(type: string = '', filters: Object = {}) {
+    this.setListTo(type, filters);
+    this.clearSearch();
+  }
+
+  clearSearch() {
+    this.value = '';
   }
 }

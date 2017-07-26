@@ -10,9 +10,11 @@
   <div class="banner">
       <div class="container row">
         <input
+          id="mainSearch"
           class="col-md-12 search-box"
+          [(ngModel)]="value"
           placeholder="Looking for anything in particular?"
-          (keyup)="$event.keyCode == 13 && (searchInput.value.length > 0? setListTo('all', {title: searchInput.value}) : setListTo('all'))"
+          (keyup)="$event.keyCode == 13 && (searchInput.value.length > 0? doSearch('all', {title: value}) : doSearch('all'))"
           #searchInput>
       </div>
     </div>
@@ -39,7 +41,7 @@
             <li class="nav-item" [hidden]="!listConfig.filters.tag && !listConfig.filters.title">
               <a class="nav-link active">
                 <i [hidden]="!listConfig.filters.tag" class="ion-pound"></i>
-                <span [hidden]="!listConfig.filters.title">🔍</span>
+                <i [hidden]="!listConfig.filters.title" class="ion-search"></i>
                 {{ listConfig.filters.tag || listConfig.filters.title }}
               </a>
             </li>
