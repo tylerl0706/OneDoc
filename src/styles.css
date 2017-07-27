@@ -7425,6 +7425,10 @@ footer .attribution {
 .link-list-item-description {
   color: gray;
   font-style: italic;
+  overflow: hidden;
+  display: block;
+  word-wrap: break-word;
+  height: 20px;
 }
 
 .link-list-item-description:hover {
