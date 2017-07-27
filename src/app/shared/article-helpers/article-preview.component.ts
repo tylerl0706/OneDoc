@@ -14,6 +14,10 @@ export class ArticlePreviewComponent {
 
     if (favorited) {
       this.article['favoritesCount']++;
+      if (this.article['downvoted']) {
+        this.article['downvoted'] = false;
+        this.article['downvotesCount']--;
+      }
     } else {
       this.article['favoritesCount']--;
     }
@@ -24,6 +28,10 @@ export class ArticlePreviewComponent {
 
     if (downvoted) {
       this.article['downvotesCount']++;
+      if (this.article['favorited']) {
+        this.article['favorited'] = false;
+        this.article['favoritesCount']--;
+      }
     } else {
       this.article['downvotesCount']--;
     }

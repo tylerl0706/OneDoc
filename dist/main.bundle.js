@@ -1635,6 +1635,10 @@ var ArticlePreviewComponent = (function () {
         this.article['favorited'] = favorited;
         if (favorited) {
             this.article['favoritesCount']++;
+            if (this.article['downvoted']) {
+                this.article['downvoted'] = false;
+                this.article['downvotesCount']--;
+            }
         }
         else {
             this.article['favoritesCount']--;
@@ -1644,6 +1648,10 @@ var ArticlePreviewComponent = (function () {
         this.article['downvoted'] = downvoted;
         if (downvoted) {
             this.article['downvotesCount']++;
+            if (this.article['favorited']) {
+                this.article['favorited'] = false;
+                this.article['favoritesCount']--;
+            }
         }
         else {
             this.article['downvotesCount']--;
