@@ -2955,8 +2955,8 @@ fieldset[disabled] a.btn {
 
 .btn-outline-secondary:hover {
   background-color: #5bc0de;
-  border-color: #5bc0de !important;
-  color: white !important;
+  border-color: #fff !important;
+  color: #007496 !important;
   -webkit-transition: background-color 200ms linear;
   -ms-transition: background-color 200ms linear;
   transition: background-color 200ms linear;

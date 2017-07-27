@@ -10,13 +10,13 @@
           <span [hidden]="!canModify">
           <a class="btn btn-sm btn-outline-secondary"
              [routerLink]="['/editor', article.slug]">
-            <i class="ion-edit"></i> Edit Article
+            <i class="ion-edit"></i> Edit Link
           </a>
 
           <button class="btn btn-sm btn-outline-danger"
             [ngClass]="{disabled: isDeleting}"
             (click)="deleteArticle()">
-            <i class="ion-trash-a"></i> Delete Article
+            <i class="ion-trash-a"></i> Delete Link
           </button>
         </span>
 
@@ -29,8 +29,14 @@
           <favorite-button
             [article]="article"
             (onToggle)="onToggleFavorite($event)">
-            {{ article.favorited ? 'Unfavorite' : 'Favorite' }} Article <span class="counter">({{ article.favoritesCount }})</span>
+            {{ article.favorited ? 'Un-Upvote' : 'Upvote' }} Link <span class="counter">({{ article.favoritesCount }})</span>
           </favorite-button>
+
+          <downvote-button
+            [article]="article"
+            (onToggle)="onToggleDownvote($event)">
+            {{ article.downvoted ? 'Un-Downvote' : 'Downvote' }} Link <span class="counter">({{ article.downvotesCount }})</span>
+          </downvote-button>
         </span>
 
       </article-meta>
@@ -81,7 +87,7 @@
         </div>
 
         <div *showAuthed="false">
-          <a [routerLink]="['/login']">Sign in</a> or <a [routerLink]="['/register']">sign up</a> to add comments on this article.
+          <a [routerLink]="['/login']">Sign in</a> or <a [routerLink]="['/register']">sign up</a> to add comments on this link.
         </div>
 
         <article-comment

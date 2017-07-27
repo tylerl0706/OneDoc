@@ -55,12 +55,30 @@ export class ArticleComponent implements OnInit {
   }
 
   onToggleFavorite(favorited: boolean) {
-    this.article.favorited = favorited;
+    this.article['favorited'] = favorited;
 
     if (favorited) {
-      this.article.favoritesCount++;
+      this.article['favoritesCount']++;
+      if (this.article['downvoted']) {
+        this.article['downvoted'] = false;
+        this.article['downvotesCount']--;
+      }
     } else {
-      this.article.favoritesCount--;
+      this.article['favoritesCount']--;
+    }
+  }
+
+  onToggleDownvote(downvoted: boolean) {
+    this.article['downvoted'] = downvoted;
+
+    if (downvoted) {
+      this.article['downvotesCount']++;
+      if (this.article['favorited']) {
+        this.article['favorited'] = false;
+        this.article['favoritesCount']--;
+      }
+    } else {
+      this.article['downvotesCount']--;
     }
   }
 
